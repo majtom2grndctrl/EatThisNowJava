@@ -1,0 +1,6 @@
+users:
+
+    - !!models.User
+        email:      dhiester@example.com
+        name:       Dan Hiester
+        password:   ETN!

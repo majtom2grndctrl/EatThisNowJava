@@ -3,4 +3,9 @@ users:
     - !!models.User
         email:      dhiester@example.com
         name:       Dan Hiester
-        password:   ETN!
+        password:   secret
+
+    - !!models.User
+        email:      wbuccicone@example.com
+        name:       Whitney Buccicone
+        password:   secret

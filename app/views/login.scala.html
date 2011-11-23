@@ -1,5 +1,5 @@
-@(form: Form[Application.Login])
-
+@(loginForm: Form[Application.Login])
+@import helper._
 <html>
     <head>
         <title>Eat This Now!</title>
@@ -13,13 +13,13 @@
             <a href="@routes.Foods.index" id="logo">Eat This Now!</a>
         </header>
         
-        @helper.form(routes.Application.authenticate) {
+        @form( action = routes.Application.authenticate) {
             
             <h1>Sign in</h1>
             
-            @if(form.hasGlobalErrors) { 
+            @if(loginForm.hasGlobalErrors) { 
                 <p class="error">
-                    @form.globalError.message
+                    @loginForm.globalError.message
                 </p>
             }
             
@@ -29,12 +29,14 @@
                 </p>
             }
             
-            <p>
-                <input type="email" name="email" placeholder="Email" value="@form("email").value">
-            </p>
-            <p>
-                <input type="password" name="password" placeholder="Password">
-            </p>
+            @inputText(
+				field = loginForm("email"),
+				args = 'label -> "Email", 'placeholder -> "Email"
+			)
+            @inputPassword(
+				field = loginForm("password"),
+				args = 'label -> "Password"
+			)
             <p>
                 <button type="submit">Login</button>
             </p>
